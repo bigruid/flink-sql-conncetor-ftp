@@ -254,10 +254,10 @@ public class FtpHandler implements IFtpHandler, Serializable {
 			this.printWorkingDirectory();
 			OutputStream writeOutputStream = this.ftpClient
 					.appendFileStream(filePath);
-			String message = String.format(
-					"打开FTP文件[%s]获取写出流时出错,请确认文件%s有权限创建，有权限写出等", filePath,
-					filePath);
 			if (null == writeOutputStream) {
+				String message = String.format(
+						"打开FTP文件[%s]获取写出流时出错,请确认文件%s有权限创建，有权限写出等", filePath,
+						filePath);
 				throw new RuntimeException(message);
 			}
 

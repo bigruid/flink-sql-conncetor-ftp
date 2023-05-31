@@ -53,7 +53,7 @@ public class FtpSeqBufferedReader implements Serializable {
     }
 
     public String readLine(boolean flag) throws IOException {
-        try {
+ //       try {
             if (br == null) {
                 if (readOptions.isDeleteRead() && fileName != null) {
                     try {
@@ -89,15 +89,15 @@ public class FtpSeqBufferedReader implements Serializable {
             } else {
                 return null;
             }
-        } catch (Exception e) {
-            try {
-                Thread.sleep(10000);
-                /*TODO 异常恢复*/
-                return readLine(true);
-            } catch (InterruptedException ie) {
-                throw new RuntimeException(ie);
-            }
-        }
+//        } catch (Exception e) {
+//            try {
+//                Thread.sleep(10000);
+//                /*TODO 异常恢复*/
+//                return readLine(true);
+//            } catch (Exception ie) {
+//                throw new RuntimeException(ie);
+//            }
+//        }
     }
 
     private void nextStream() throws IOException {
