@@ -117,12 +117,14 @@ public class FileUtil {
 		if (protocol == null) {
 			throw new RuntimeException("protocol not supplied.");
 		}
-		int tmpPort = DEFAULT_FTP_PORT;
-		if (port == null && EProtocol.SFTP.name().equalsIgnoreCase(protocol)) {
+		int tmpPort;
+		if (EProtocol.SFTP.name().equalsIgnoreCase(protocol)) {
 			tmpPort = DEFAULT_SFTP_PORT;
-		} else if (port == null && EProtocol.FTP.name().equalsIgnoreCase(protocol)) {
+		} else if (EProtocol.FTP.name().equalsIgnoreCase(protocol)) {
 			tmpPort = DEFAULT_FTP_PORT;
+		} else {
+			throw new RuntimeException("protocol not supplied.");
 		}
-		return tmpPort;
+		return port == null ? tmpPort : port;
 	}
 }
